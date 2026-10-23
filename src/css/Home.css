@@ -1,0 +1,146 @@
+
+/* ===== Home Page ===== */
+.home {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+/* ===== Search Form ===== */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.search-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #e50914;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background-color: #f40612;
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Movies Grid ===== */
+.home .movies-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.home .movie-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.home .movie-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== Laptop ===== */
+@media (max-width: 1200px) {
+  .home .movies-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .home .movies-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .home {
+    padding: 1rem 0;
+  }
+
+  .search-form {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .search-input {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .search-button {
+    padding: 0.7rem 1rem;
+  }
+
+  .home .movies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ===== Very Small Phones ===== */
+@media (max-width: 360px) {
+  .search-form {
+    padding: 0 0.5rem;
+  }
+
+  .search-button {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .home .movies-grid {
+    gap: 0.75rem 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .search-button {
+    transition: none;
+  }
+}
