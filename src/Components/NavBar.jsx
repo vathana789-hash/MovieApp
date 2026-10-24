@@ -20,6 +20,10 @@ function NavBar() {
           Home
         </NavLink>
 
+        <NavLink to="/about" className="nav-link">
+          About
+        </NavLink>
+
         <NavLink
           to="/trending"
           className={({ isActive }) =>

@@ -8,6 +8,8 @@ import { Routes, Route } from "react-router-dom";
 import { MovieProvider } from "./contexts/FavoriteContext";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import About from "./pages/About";
+
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
     </MovieProvider>

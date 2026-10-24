@@ -1,25 +1,33 @@
+
 import { useState, useEffect } from "react";
-import MovieCard from "../Components/MovieCard"
+import MovieCard from "../Components/MovieCard";
+import MovieSlider from "../Components/MovieSlider";
 import { searchMovie, getPopularMovies } from "../services/api";
 import "../css/Home.css";
-
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load popular movies when the page opens
+  // Load popular movies
   useEffect(() => {
     const loadPopularMovies = async () => {
       try {
         setError(null);
 
-        const popularMovies = await getPopularMovies();
-        setMovies(popularMovies);
+        const popular = await getPopularMovies();
+
+        setPopularMovies(
+          Array.isArray(popular) ? popular : []
+        );
+        setMovies(
+          Array.isArray(popular) ? popular : []
+        );
       } catch (err) {
-        console.error(err);
+        console.error("Popular movies error:", err);
         setError("Failed to load movies. Please try again.");
       } finally {
         setLoading(false);
@@ -33,18 +41,23 @@ function Home() {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    if (!searchQuery.trim()) return;
-    if (loading) return;
+    if (!searchQuery.trim() || loading) return;
 
     try {
       setLoading(true);
       setError(null);
 
-      const searchResults = await searchMovie(searchQuery);
-      setMovies(searchResults);
+      const results = await searchMovie(searchQuery.trim());
+
+      if (Array.isArray(results)) {
+        setMovies(results);
+      } else {
+        setMovies([]);
+      }
     } catch (err) {
-      console.error(err);
+      console.error("Search error:", err);
       setError("Failed to search movies. Please try again.");
+      setMovies([]);
     } finally {
       setLoading(false);
     }
@@ -52,6 +65,7 @@ function Home() {
 
   return (
     <div className="home">
+      {/* Search Form */}
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -66,12 +80,21 @@ function Home() {
           className="search-button"
           disabled={loading}
         >
-          Search
+          {loading ? "Loading..." : "Search"}
         </button>
       </form>
 
-      {error && <div className="error-message">{error}</div>}
+      {/* Movie Slider */}
+      <MovieSlider movies={popularMovies} />
 
+      {/* Error Message */}
+      {error && (
+        <p className="error-message" role="alert">
+          {error}
+        </p>
+      )}
+
+      {/* Movies */}
       {loading ? (
         <div className="loading">Loading movies...</div>
       ) : (
