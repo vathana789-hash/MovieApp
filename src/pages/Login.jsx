@@ -8,7 +8,8 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-    alert("Welcome back! 🎬 Enjoy your movie time.");
+
+    alert("Login successfully! 🎬 Welcome back to MovieApp.");
   }
 
   return (
@@ -16,10 +17,13 @@ function Login() {
       <form className="auth-card" onSubmit={handleLogin}>
         <div className="auth-logo">
           <i className="bi bi-film"></i>
-          <span>Movie<span className="red-text">App</span></span>
+          <span>
+            Movie<span className="red-text">App</span>
+          </span>
         </div>
 
         <h1>Welcome Back!</h1>
+
         <p className="auth-subtitle">
           Login to enjoy your favorite movies.
         </p>
@@ -37,6 +41,7 @@ function Login() {
 
         <div className="auth-field">
           <label htmlFor="login-password">Password</label>
+
           <div className="password-wrapper">
             <input
               id="login-password"
@@ -45,13 +50,20 @@ function Login() {
               autoComplete="current-password"
               required
             />
+
             <button
               type="button"
               className="password-toggle"
               onClick={() => setShowPassword(!showPassword)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-label={
+                showPassword ? "Hide password" : "Show password"
+              }
             >
-              <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+              <i
+                className={`bi ${
+                  showPassword ? "bi-eye-slash" : "bi-eye"
+                }`}
+              ></i>
             </button>
           </div>
         </div>

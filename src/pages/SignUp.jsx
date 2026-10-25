@@ -24,7 +24,8 @@ function SignUp() {
     }
 
     setError("");
-    alert("Account created successfully! Welcome to MovieApp.");
+
+    alert("Sign up successfully! 🎬 Welcome to MovieApp.");
   }
 
   return (
@@ -32,10 +33,13 @@ function SignUp() {
       <form className="auth-card" onSubmit={handleSignUp}>
         <div className="auth-logo">
           <i className="bi bi-film"></i>
-          <span>Movie<span className="red-text">App</span></span>
+          <span>
+            Movie<span className="red-text">App</span>
+          </span>
         </div>
 
         <h1>Create Account</h1>
+
         <p className="auth-subtitle">
           Join MovieApp and discover great movies.
         </p>
@@ -66,6 +70,7 @@ function SignUp() {
 
         <div className="auth-field">
           <label htmlFor="signup-password">Password</label>
+
           <div className="password-wrapper">
             <input
               id="signup-password"
@@ -76,19 +81,29 @@ function SignUp() {
               minLength={8}
               required
             />
+
             <button
               type="button"
               className="password-toggle"
               onClick={() => setShowPassword(!showPassword)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-label={
+                showPassword ? "Hide password" : "Show password"
+              }
             >
-              <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+              <i
+                className={`bi ${
+                  showPassword ? "bi-eye-slash" : "bi-eye"
+                }`}
+              ></i>
             </button>
           </div>
         </div>
 
         <div className="auth-field">
-          <label htmlFor="signup-confirm-password">Confirm Password</label>
+          <label htmlFor="signup-confirm-password">
+            Confirm Password
+          </label>
+
           <input
             id="signup-confirm-password"
             name="confirmPassword"
